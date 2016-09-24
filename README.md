@@ -24,11 +24,10 @@ OSTicket.createTicket(data, function(err, res) {
 ### Create a New TIcket
 ```
 var ticket = {
-    'description': "Hello, I'm an ephemeral ticket created from the API. I will be deleted as soon as my creator wishes so...",
-    'subject': "Efemeros",
-    'email': 'efemeros@mailinator.com',
-    'priority': '1',
-    'status': '2',
+    "name": "Jane Doe",
+    "email": "jane.doe@admiralcloud.com",
+    "subject": "I need help",
+    "message": "This is my bug report"
 };
 
 OSTicket.createTicket(ticket, function(err, res) {
