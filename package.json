@@ -1,0 +1,14 @@
+{
+  "name": "osticket",
+  "version": "1.0.0",
+  "description": "OSTicket API Wrapper",
+  "main": "index.js",
+  "author": "Mark Poepping <mark.poepping@mmpro.de",
+  "license": "MIT",
+  "dependencies": {
+    "lodash": "^4.16.1",
+    "request": "^2.75.0",
+    "request-promise": "^4.1.1",
+    "url": "^0.11.0"
+  }
+}
