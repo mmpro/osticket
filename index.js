@@ -83,7 +83,7 @@ OSTicket = (function() {
     let validate = this.validate({ requiredFields: requiredFields, data: data });
     if (validate) return cb(validate);
 
-    //return this.post('/api/tickets.json', data, cb);
+    return this.post('/api/tickets.json', data, cb);
   };
 
   return OSTicket;
