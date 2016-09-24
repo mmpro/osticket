@@ -4,7 +4,7 @@ Wrapper for OSTicket. At the moment you can only create tickets.
 
 # Installation
 ```
-  npm install git@github.com:mmpro/osticket-node.git
+  npm install git+ssh://git@github.com:mmpro/osticket --save
 ```
 
 # Usage
