@@ -10,9 +10,7 @@ const bind = function(fn, me){
 };
 
 
-const OSTicket;
-
-OSTicket = (function() {
+const OSTicket = (function() {
   function OSTicket(url, apikey, options) {
     this.url = url;
 
