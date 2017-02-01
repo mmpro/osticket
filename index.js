@@ -1,6 +1,6 @@
-var _ = require('lodash');
-var url = require('url');
-var request = require('request-promise');
+const _ = require('lodash');
+const url = require('url');
+const request = require('request-promise');
 
 
 const bind = function(fn, me){
@@ -10,10 +10,10 @@ const bind = function(fn, me){
 };
 
 
-var OSTicket;
+const OSTicket;
 
 OSTicket = (function() {
-  function OSTicket(url, apikey) {
+  function OSTicket(url, apikey, options) {
     this.url = url;
 
     this.createTicket = bind(this.createTicket, this);
@@ -23,10 +23,12 @@ OSTicket = (function() {
     this.post = bind(this.post, this);
     this.get = bind(this.get, this);
 
-    var defaultHeaders = {
+    let defaultHeaders = {
       'Content-Type': 'application/x-www-form-urlencoded',
       'X-API-Key': apikey,
     };
+
+    if (_.get(options, 'apiSecret')) _.set(defaultHeaders, "X-API-AUTH", _.get(options, 'apiSecret'))
 
     this.r = request.defaults({
       headers: defaultHeaders
