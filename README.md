@@ -4,11 +4,11 @@ Wrapper for OSTicket. At the moment you can only create tickets.
 
 # Installation
 ```
-  npm install git+ssh://git@github.com:mmpro/osticket --save
+  yarn add ac-osticket
+  npm install ac-osticket --save
 ```
 
 # Usage
-
 Create API Key in OSTicket and instanciate OSTicket with your OSTicket URL and those API keys.
 
 ```
@@ -21,7 +21,7 @@ OSTicket.createTicket(data, function(err, res) {
 ```
 
 
-### Create a New TIcket
+### Create a New Ticket
 ```
 var ticket = {
     "name": "Jane Doe",
@@ -34,6 +34,14 @@ OSTicket.createTicket(ticket, function(err, res) {
   console.log("ID of the created tickets", res.body);
 });
 ```
+
+## Links
+- [Website](https://www.admiralcloud.com/)
+- [Twitter (@admiralcloud)](https://twitter.com/admiralcloud)
+- [Facebook](https://www.facebook.com/MediaAssetManagement/)
+
+## License
+[MIT License](https://opensource.org/licenses/MIT) Copyright © 2009-present, AdmiralCloud, Mark Poepping
 
 # Contributing
 This module is inspired by https://github.com/hongkongkiwi/osticket-node and https://github.com/kumarharsh/node-freshdesk
