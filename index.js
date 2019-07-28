@@ -1,74 +1,73 @@
-const _ = require('lodash');
-const url = require('url');
-const request = require('request-promise');
+const _ = require('lodash')
+const request = require('request-promise')
 
 
 const bind = function(fn, me){
   return function(){
-    return fn.apply(me, arguments);
-  };
-};
+    return fn.apply(me, arguments)
+  }
+}
 
 
 const OSTicket = (function() {
   function OSTicket(url, apikey, options) {
-    this.url = url;
+    this.url = url
 
-    this.createTicket = bind(this.createTicket, this);
+    this.createTicket = bind(this.createTicket, this)
 
-    this["delete"] = bind(this["delete"], this);
-    this.put = bind(this.put, this);
-    this.post = bind(this.post, this);
-    this.get = bind(this.get, this);
+    this["delete"] = bind(this["delete"], this)
+    this.put = bind(this.put, this)
+    this.post = bind(this.post, this)
+    this.get = bind(this.get, this)
 
     let defaultHeaders = {
       'Content-Type': 'application/x-www-form-urlencoded',
       'X-API-Key': apikey,
-    };
+    }
 
     if (_.get(options, 'apiSecret')) _.set(defaultHeaders, "X-API-AUTH", _.get(options, 'apiSecret'))
 
     this.r = request.defaults({
       headers: defaultHeaders
-    });
+    })
   }
 
   OSTicket.prototype.get = function(path, cb) {
     return this.r.get({
       url: "" + this.url + path
-    }, cb);
-  };
+    }, cb)
+  }
 
   OSTicket.prototype.post = function(path, data, cb) {
     return this.r.post({
       url: "" + this.url + path,
       json: data
-    }, cb);
-  };
+    }, cb)
+  }
 
   OSTicket.prototype.put = function(path, data, cb) {
     return this.r.put({
       url: "" + this.url + path,
       json: data
-    }, cb);
-  };
+    }, cb)
+  }
 
   OSTicket.prototype["delete"] = function(path, cb) {
     return this.r.del({
       url: "" + this.url + path
-    }, cb);
-  };
+    }, cb)
+  }
 
   OSTicket.prototype.validate = function(params) {
-    let requiredFields = params.requiredFields;
-    let dataToValidate = params.data;
+    let requiredFields = params.requiredFields
+    let dataToValidate = params.data
 
-    let err;
+    let err
     _.each(requiredFields, function(field) {
-      if (!_.has(dataToValidate, field)) err = field + '_missing';
-    });
-    return err;
-  };
+      if (!_.has(dataToValidate, field)) err = field + '_missing'
+    })
+    return err
+  }
 
 
 
@@ -79,15 +78,15 @@ const OSTicket = (function() {
    */
   OSTicket.prototype.createTicket = function(data, cb) {
 
-    let requiredFields = ["email", "name", "subject", "message"];
-    let validate = this.validate({ requiredFields: requiredFields, data: data });
-    if (validate) return cb(validate);
+    let requiredFields = ["email", "name", "subject", "message"]
+    let validate = this.validate({ requiredFields: requiredFields, data: data })
+    if (validate) return cb(validate)
 
-    return this.post('/api/tickets.json', data, cb);
-  };
+    return this.post('/api/tickets.json', data, cb)
+  }
 
-  return OSTicket;
+  return OSTicket
 
-})();
+})()
 
-module.exports = OSTicket;
+module.exports = OSTicket
