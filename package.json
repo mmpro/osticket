@@ -1,14 +1,27 @@
 {
-  "name": "osticket",
-  "version": "1.0.1",
+  "name": "ac-osticket",
+  "version": "1.0.2",
   "description": "OSTicket API Wrapper",
   "main": "index.js",
   "author": "Mark Poepping <mark.poepping@mmpro.de",
   "license": "MIT",
   "dependencies": {
-    "lodash": "^4.16.1",
-    "request": "^2.75.0",
-    "request-promise": "^4.1.1",
-    "url": "^0.11.0"
+    "lodash": "^4.17.x",
+    "request": "^2.88.0",
+    "request-promise": "^4.2.4"
+  },
+  "devDependencies": {
+    "ac-conventional-changelog-template": "git+https://github.com/mmpro/ac-conventional-changelog-template.git",
+    "corp-semantic-release": "git+https://github.com/mmpro/corp-semantic-release.git",
+    "cz-customizable": "git+https://github.com/mmpro/cz-customizable.git",
+    "eslint": "6.x"
+  },
+  "config": {
+    "commitizen": {
+      "path": "node_modules/cz-customizable"
+    },
+    "cz-customizable": {
+      "config": ".czConfig.js"
+    }
   }
 }
