@@ -1,3 +1,12 @@
+<a name="0.0.2"></a>
+
+## [0.0.2](https://github.com/mmpro/ac-osticket/compare/v0.0.1..v0.0.2) (2020-03-29 12:46:03)
+
+
+### Bug Fix
+
+* **App:** Maintenance release | MP | [b61d8610c31b9861860c985282d5e4696b0e43f1](https://github.com/mmpro/ac-osticket/commit/b61d8610c31b9861860c985282d5e4696b0e43f1)    
+Maintenance release to make sure installation from NPM is working (last version there is 1.0.2)
 <a name="0.0.1"></a>
 
 ## [0.0.1](https://github.com/mmpro/ac-osticket/compare/..v0.0.1) (2020-03-29 12:42:09)
