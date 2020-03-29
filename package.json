@@ -1,6 +1,6 @@
 {
   "name": "ac-osticket",
-  "version": "1.0.2",
+  "version": "0.0.1",
   "description": "OSTicket API Wrapper",
   "main": "index.js",
   "author": "Mark Poepping <mark.poepping@mmpro.de",
