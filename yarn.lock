@@ -29,9 +29,9 @@
   integrity sha512-rr+OQyAjxze7GgWrSaJwydHStIhHq2lvY3BOC2Mj7KnzI7XK0Uw1TOOdI9lDoajEbSWLiYgoo4f1R51erQfhPQ==
 
 ac-semantic-release@^0.1.0:
-  version "0.1.0"
-  resolved "https://registry.yarnpkg.com/ac-semantic-release/-/ac-semantic-release-0.1.0.tgz#bcf1971a8baec27836cbd8cb2a084f5595889cdf"
-  integrity sha512-2WaWwtQ2AafKkxrhMqsuKCMysT+5FFJxOmRlV0Y61lC14uMFHgUyGFxF6ZpwndvvBsvMyd3dvFRx9hFK5Q0g4A==
+  version "0.1.1"
+  resolved "https://registry.yarnpkg.com/ac-semantic-release/-/ac-semantic-release-0.1.1.tgz#56e90fe5246dc26ee9c54667528e4a2f569dc53c"
+  integrity sha512-5RrDRYW51AfjTTOdvP7a47gETf4ar4dHatEWmaprqRb1btdDUnC3Y4l4PEpNEby+XgCVE6kRNp8GmV6Annseyw==
   dependencies:
     async "^3.2.0"
     inquirer "^7.1.0"
