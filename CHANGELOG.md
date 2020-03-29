@@ -1,3 +1,22 @@
+<a name="1.0.4"></a>
+
+## [1.0.4](https://github.com/mmpro/ac-osticket/compare/v1.0.3..v1.0.4) (2020-03-29 12:52:39)
+
+
+### Bug Fix
+
+* **App:** Maintenance release | MP | [f187339fe62212cff78aeaf8f016f2cc70dec29b](https://github.com/mmpro/ac-osticket/commit/f187339fe62212cff78aeaf8f016f2cc70dec29b)    
+Maintenance release
+* **App:** Maintenance release | MP | [b61d8610c31b9861860c985282d5e4696b0e43f1](https://github.com/mmpro/ac-osticket/commit/b61d8610c31b9861860c985282d5e4696b0e43f1)    
+Maintenance release to make sure installation from NPM is working (last version there is 1.0.2)
+### Chores
+
+* **App:** Updated packages | MP | [6bde0783b4c4eb2325af50c2a5ae5beb68b43ed4](https://github.com/mmpro/ac-osticket/commit/6bde0783b4c4eb2325af50c2a5ae5beb68b43ed4)    
+Updated packages
+* **release:** v0.0.3 [ci skip] | [e1daf485d0cde9e2969255e1954e2fdea9551189](https://github.com/mmpro/ac-osticket/commit/e1daf485d0cde9e2969255e1954e2fdea9551189)    
+
+* **release:** v0.0.2 [ci skip] | [c770e369f706b13c214f888632474581a8c34605](https://github.com/mmpro/ac-osticket/commit/c770e369f706b13c214f888632474581a8c34605)    
+
 <a name="0.0.3"></a>
 
 ## [0.0.3](https://github.com/mmpro/ac-osticket/compare/v0.0.2..v0.0.3) (2020-03-29 12:46:58)
