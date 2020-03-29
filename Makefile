@@ -11,8 +11,10 @@ rebase:
 	git fetch origin master
 	git rebase origin/master
 
-release:
-	./node_modules/corp-semantic-release/src/index.js --branch master --useTemplate "ac-conventional-changelog-template"
+commit:
+	@node ./node_modules/ac-semantic-release/lib/commit.js
 
+release:
+	@node ./node_modules/ac-semantic-release/lib/release.js
 
 .PHONY: check
