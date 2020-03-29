@@ -1,3 +1,12 @@
+<a name="0.0.3"></a>
+
+## [0.0.3](https://github.com/mmpro/ac-osticket/compare/v0.0.2..v0.0.3) (2020-03-29 12:46:58)
+
+
+### Bug Fix
+
+* **App:** Maintenance release | MP | [f187339fe62212cff78aeaf8f016f2cc70dec29b](https://github.com/mmpro/ac-osticket/commit/f187339fe62212cff78aeaf8f016f2cc70dec29b)    
+Maintenance release
 <a name="0.0.2"></a>
 
 ## [0.0.2](https://github.com/mmpro/ac-osticket/compare/v0.0.1..v0.0.2) (2020-03-29 12:46:03)
