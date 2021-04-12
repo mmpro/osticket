@@ -1,3 +1,16 @@
+<a name="1.0.5"></a>
+
+## [1.0.5](https://github.com/mmpro/ac-osticket/compare/v1.0.4..v1.0.5) (2021-04-12 17:02:02)
+
+
+### Bug Fix
+
+* **App:** Minor fix | MP | [7defe194d9f7a7664bf105464f93d38efc260fe9](https://github.com/mmpro/ac-osticket/commit/7defe194d9f7a7664bf105464f93d38efc260fe9)    
+Minor fix
+### Chores
+
+* **App:** Updated packages | MP | [c1be041336ae0ce19aca200ed1b96b02999e216f](https://github.com/mmpro/ac-osticket/commit/c1be041336ae0ce19aca200ed1b96b02999e216f)    
+Updated packages
 <a name="1.0.4"></a>
 
 ## [1.0.4](https://github.com/mmpro/ac-osticket/compare/v1.0.3..v1.0.4) (2020-03-29 12:52:39)
