@@ -7,12 +7,12 @@
   "author": "Mark Poepping <mark.poepping@mmpro.de",
   "license": "MIT",
   "dependencies": {
-    "lodash": "^4.17.x",
+    "lodash": "^4.17.21",
     "request": "^2.88.0",
-    "request-promise": "^4.2.4"
+    "request-promise": "^4.2.6"
   },
   "devDependencies": {
-    "ac-semantic-release": "^0.1.0",
-    "eslint": "6.x"
+    "ac-semantic-release": "^0.2.5",
+    "eslint": "7.24.0"
   }
 }

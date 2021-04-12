@@ -1,4 +1,5 @@
-const config = {
+let config = {
+  root: true,
   'env': {
     'commonjs': true,
     'es6': true,
@@ -14,14 +15,13 @@ const config = {
     "standard/no-callback-literal": 0,
     "new-cap": 0
   },
-  globals: {
-    config: true,
-    describe: true,
-    it: true
-  },
   'parserOptions': {
     'ecmaVersion': 2018
-},
+  },
+  globals: {
+    config: true,
+    acapi: true,
+    expect: true
+  }
 }
-
 module.exports = config
