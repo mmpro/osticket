@@ -79,7 +79,7 @@ const OSTicket = (function() {
   OSTicket.prototype.createTicket = function(data, cb) {
 
     let requiredFields = ["email", "name", "subject", "message"]
-    let validate = this.validate({ requiredFields: requiredFields, data: data })
+    let validate = this.validate({ requiredFields, data })
     if (validate) return cb(validate)
 
     return this.post('/api/tickets.json', data, cb)
