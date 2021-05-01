@@ -1,3 +1,20 @@
+<a name="2.0.1"></a>
+
+## [2.0.1](https://github.com/mmpro/ac-osticket/compare/v2.0.0..v2.0.1) (2021-05-01 07:30:53)
+
+
+### Bug Fix
+
+* **App:** Use apiKey (camel-cased) for consistency | MP | [68cf23cdf9872deacd17b23d240c233c5e2f7b73](https://github.com/mmpro/ac-osticket/commit/68cf23cdf9872deacd17b23d240c233c5e2f7b73)    
+As all parameters are camel-cased apiKey is now also camel-cased (apiKey instead of apikey)
+### Documentation
+
+* **App:** Added OSTicket tweak for usage with secrets | MP | [d90ea3bc8946b5018c63aa543ba5dde4aa34a632](https://github.com/mmpro/ac-osticket/commit/d90ea3bc8946b5018c63aa543ba5dde4aa34a632)    
+Added OSTicket tweak for usage with secrets
+### Chores
+
+* **App:** Add nyc for code coverage | MP | [cede2c785be3b0bbd77c7e78e4226198edea4f41](https://github.com/mmpro/ac-osticket/commit/cede2c785be3b0bbd77c7e78e4226198edea4f41)    
+Add nyc for code coverage
 <a name="2.0.0"></a>
  
 # [2.0.0](https://github.com/mmpro/ac-osticket/compare/v1.0.5..v2.0.0) (2021-05-01 06:52:24)
