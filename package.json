@@ -16,9 +16,10 @@
     "ac-semantic-release": "^0.2.5",
     "chai": "^4.3.4",
     "eslint": "7.25.0",
-    "mocha": "^8.3.2"
+    "mocha": "^8.3.2",
+    "nyc": "^15.1.0"
   },
   "scripts": {
-    "test": "./node_modules/.bin/mocha --bail --exit --slow 1000 ./test.js || :"
+    "test": "nyc ./node_modules/.bin/mocha --bail --exit --slow 1000 ./test.js || :"
   }
 }
