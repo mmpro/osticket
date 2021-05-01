@@ -1,3 +1,14 @@
+<a name="2.0.0"></a>
+ 
+# [2.0.0](https://github.com/mmpro/ac-osticket/compare/v1.0.5..v2.0.0) (2021-05-01 06:52:24)
+
+
+### Feature
+
+* **App:** New version with async/await | MP | [1fbd824f4ea966e0c2b7d5d97660b17f496a5998](https://github.com/mmpro/ac-osticket/commit/1fbd824f4ea966e0c2b7d5d97660b17f496a5998)    
+Re-factored module which now supports async/await but not longer uses/supports callbacks.
+## BREAKING CHANGES
+* **App:** New version with async/await
 <a name="1.0.5"></a>
 
 ## [1.0.5](https://github.com/mmpro/ac-osticket/compare/v1.0.4..v1.0.5) (2021-04-12 17:02:02)
