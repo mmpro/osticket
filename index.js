@@ -25,14 +25,20 @@ const osTicket = () => {
     }
 
     if (_.get(apiBaseParams, 'debugMode') || _.get(params, 'debug')) {
-      const ticketId = `${Math.floor(Math.random() * 100000)}_DEBUGMODE`
-      return ticketId
+      const ticketId = Math.floor(Math.random() * 100000)
+      return { ticketId, debugMode: true }
     }
 
-
     try {
-      let response = await axios(apiParams)
-      return _.get(response, 'data')  
+      const apiResponse = await axios(apiParams)
+      const response = {
+        ticketId: _.get(apiResponse, 'data')
+      }
+      // for test mode
+      if (_.get(apiResponse, 'headers.x-ac-payloadhash')) {
+        _.set(response, 'hash', _.get(apiResponse, 'headers.x-ac-payloadhash'))
+      }
+      return response
     }
     catch(e) {
       console.log('OSTICKET | Payload | %j', _.pick(apiParams, ['baseURL', 'url', 'data']))
@@ -55,18 +61,25 @@ const osTicket = () => {
     await keylock.init()
   }
   
-  const createTicket = async function(data, options) {
+  const createTicket = async(data, options) => {
+    let fields = [
+      { field: 'email', type: 'email', required: true },
+      { field: 'name', type: 'string', required: true },
+      { field: 'subject', type: 'string', required: true },
+      { field: 'message', type: 'string', required: true },
+      { field: 'payloadCheck', type: 'boolean' },
+    ]
+    if (_.size(_.get(options, 'fieldsToCheck'))) {
+      fields = _.concat(fields, _.get(options, 'fieldsToCheck'))
+    }
+
     let fieldsToCheck = {
       params: data,
-      fields: [
-        { field: 'email', type: 'email', required: true },
-        { field: 'name', type: 'string', required: true },
-        { field: 'subject', type: 'string', required: true },
-        { field: 'message', type: 'string', required: true },
-      ],
+      fields
     }
-    let test = sanitizer.checkAndSanitizeValues(fieldsToCheck)
-    if (_.get(test, 'error')) return _.get(test, 'error')
+    let check = sanitizer.checkAndSanitizeValues(fieldsToCheck)
+    if (_.get(check, 'error')) return _.get(check, 'error')
+    else data = _.get(check, 'params')
 
     let apiParams = {
       data,
@@ -83,7 +96,7 @@ const osTicket = () => {
         expires: _.get(options, 'expires')
       }
       let lock = await keylock.lockKey(lockParams)
-      if (_.has(lock, 'status')) return _.get(lock, 'status')
+      if (_.has(lock, 'status')) return { status: _.get(lock, 'status') }
       return await apiCall(apiParams)
     }
   }

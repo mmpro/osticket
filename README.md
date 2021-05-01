@@ -2,7 +2,9 @@
 
 Wrapper for OSTicket. At the moment you can only create tickets.
 
-ATTENTION: Version 2 no longer supports callbacks. Please use async/await.
+***ATTENTION/BREAKING CHANGES in version 2***
++ no supports for callbacks. Please use async/await
++ response is an object (for more flexibility) with property ticketId instead of a plain string
 
 # Installation
 ```
@@ -22,7 +24,8 @@ ost.init({
 })
 
 // see below for payload
-let ticketId = await ost.createTicket(ticket)
+let response = await ost.createTicket(ticket)
+{ ticketId: 123456 }
 ```
 
 
@@ -35,7 +38,7 @@ const ticket = {
     "message": "This is my bug report"
 }
 
-let ticketId = await ost.createTicket(ticket)
+let response = await ost.createTicket(ticket)
 ```
 
 Optionally you can use our locking mechanism to block creating too many tickets.
@@ -45,11 +48,40 @@ let options = {
     key: 'ticketLock', // name for the key to use as lock key
     expires: 5 // time to block in seconds
 }
-let ticketId = await ost.createTicket(ticket, options)
+let response = await ost.createTicket(ticket, options)
 ```
 
+## Custom fields
+You can also send custom fields to the OSTicket API. Make sure to add definitions (based on ac-sanitizer).
+
+```
+const ticket = {
+    name: 'Jane Doe',
+    email: 'jane.doe@admiralcloud.com',
+    subject: 'I need help',
+    message: 'This is my bug report',
+    jobNumber: 'ABC-JobId-123'
+}
+
+const options = {
+    fieldsToCheck: [
+        { field: 'jobNumber', type: 'string', required: true },
+    ]
+}
+let response = await ost.createTicket(ticket, options)
+
+```
+
+
 ## Test mode
-You can enable test mode, which will not create real tickets but instead return a random ID with "DEBUGMODE" suffix (e.g. 134567_DEBUGMODE). 
+You can enable test mode, which will not create real tickets but instead return a random ID and debugMode true in the response
+
+```
+{
+    ticketId: 123456,
+    debugMode: true
+}
+```
 
 Enable testmode globally by using init parameter "debugmode" to true or use it on per-function basis and create a ticket with option debug = true.
 
@@ -69,7 +101,7 @@ const ticket = {
     "message": "This is my bug report"
 }
 
-let ticketId = await ost.createTicket(ticket, { debug: true })
+let response = await ost.createTicket(ticket, { debug: true })
 ```
 
 # OSTicket Tweaks
@@ -133,6 +165,7 @@ function getApiKey() {
 ```
 
 
+# License & Contributing
 
 ## Links
 - [Website](https://www.admiralcloud.com/)
@@ -142,6 +175,9 @@ function getApiKey() {
 ## License
 [MIT License](https://opensource.org/licenses/MIT) Copyright © 2009-present, AdmiralCloud AG, Mark Poepping
 
-# Contributing
+## Contributing
+If you want to contribute, please make sure to add tests and have code coverage of 100% when running *yarn run test*.
+
+## Thanks
 This module is inspired by https://github.com/hongkongkiwi/osticket-node and https://github.com/kumarharsh/node-freshdesk
 
