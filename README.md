@@ -15,6 +15,7 @@ Wrapper for OSTicket. At the moment you can only create tickets.
 # Usage
 Create API Key in OSTicket and instanciate OSTicket with your OSTicket URL and those API keys.
 
+## Init
 ```
 const ost = require('osticket')
 ost.init({
@@ -28,8 +29,17 @@ let response = await ost.createTicket(ticket)
 { ticketId: 123456 }
 ```
 
+### Init params
+| Property | Type | Notes |
+| --- | --- | --- |
+| baseUrl | string | required base url of your OS ticket instance |
+| apiKey | string | required API key |
+| apiSecret | string | optional, see Tweak section below
+| debugMode | boolean | If true, no real tickets are created
+| keylock | object | Optional parameters for keylock (e.g. redis to use Redis instead of local memory) 
 
-### Create a New Ticket
+
+## Create a New Ticket
 ```
 const ticket = {
     "name": "Jane Doe",

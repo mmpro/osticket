@@ -58,7 +58,7 @@ const osTicket = () => {
     if (_.has(params, 'debugMode')) {
       _.set(apiBaseParams, 'debugMode', _.get(params, 'debugMode'))
     }
-    await keylock.init()
+    await keylock.init(_.get(params, 'keylock'))
   }
   
   const createTicket = async(data, options) => {
