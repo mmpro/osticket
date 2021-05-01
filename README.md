@@ -17,7 +17,7 @@ Create API Key in OSTicket and instanciate OSTicket with your OSTicket URL and t
 const ost = require('osticket')
 ost.init({
   baseUrl: 'https://myOSTicketURL',
-  apikey: 'abc-123', 
+  apiKey: 'abc-123', 
   apiSecret: 'abc-secret' // optional if you have tweaked OSTicket
 })
 

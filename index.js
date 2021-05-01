@@ -4,7 +4,6 @@ const axios = require('axios')
 const keylock = require('ac-keylock')
 const sanitizer = require('ac-sanitizer')
 
-
 const osTicket = () => {
 
   // PRIVATE
@@ -30,7 +29,9 @@ const osTicket = () => {
       return _.get(response, 'data')  
     }
     catch(e) {
-      console.log('OSTICKET | %j | %j', _.pick(apiParams, ['baseURL', 'url', 'data']), e)
+      console.log('OSTICKET | Payload | %j', _.pick(apiParams, ['baseURL', 'url', 'data']))
+      console.log('OSTICKET | Error | %s | %j', _.get(e, 'code'), _.get(e, 'message'))
+      return { code: _.get(e, 'code'), message: _.get(e, 'message') }
     }
   }
 
@@ -38,7 +39,7 @@ const osTicket = () => {
   // PUBLIC
   const init = async (params) => {
     _.set(apiBaseParams, 'baseUrl', _.get(params, 'baseUrl'))
-    _.set(apiBaseParams, 'headers.x-api-key', _.get(params, 'apikey'))
+    _.set(apiBaseParams, 'headers.x-api-key', _.get(params, 'apiKey'))
     if (_.get(params, 'apiSecret')) {
       _.set(apiBaseParams, 'headers.x-api-auth', _.get(params, 'apiSecret'))
     }

@@ -31,7 +31,7 @@ const expect = require('chai').expect
 const ost = require('./index')
 ost.init({
   baseUrl: 'http://localhost:8070/',
-  apikey: 'abc-123', 
+  apiKey: 'abc-123', 
   apiSecret: 'abc-secret' 
 })
 
@@ -94,7 +94,6 @@ describe('Run test', function() {
     setTimeout(done, 5000)
   })
 
-
   it('Should create a ticket after lock is released', async() => {
     const ticket = {
       name: 'Jane Doe',
@@ -104,6 +103,22 @@ describe('Run test', function() {
     }
     let response = await ost.createTicket(ticket)
     expect(response).to.be.a('number')
+  })
+
+  it('Try to create a ticket at a non-existing server - should fail', async() => {
+    ost.init({
+      baseUrl: 'http://localhost:8071/',
+      apiKey: 'abc-123'
+    })
+
+    const ticket = {
+      name: 'Jane Doe',
+      email: 'jane.doe@admiralcloud.com',
+      subject: 'I need help',
+      message: 'This is my bug report'
+    }
+    let response = await ost.createTicket(ticket)
+    expect(response).to.be.have.property('code', 'ECONNREFUSED')
   })
 
 })
