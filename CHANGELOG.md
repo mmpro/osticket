@@ -1,3 +1,12 @@
+<a name="2.0.2"></a>
+
+## [2.0.2](https://github.com/mmpro/ac-osticket/compare/v2.0.1..v2.0.2) (2021-05-01 11:13:49)
+
+
+### Bug Fix
+
+* **App:** Allow debug mode | MP | [4026d40973895893cd64f5ab7a67260336c2405b](https://github.com/mmpro/ac-osticket/commit/4026d40973895893cd64f5ab7a67260336c2405b)    
+Allow debug mode
 <a name="2.0.1"></a>
 
 ## [2.0.1](https://github.com/mmpro/ac-osticket/compare/v2.0.0..v2.0.1) (2021-05-01 07:30:53)
