@@ -1,6 +1,7 @@
 /**
  * PREPARE HTTP MOCK SERVER AS OSTICKET ENDPOINT
  */
+const _ = require('lodash')
 const http = require('http')
 
 /**
@@ -15,7 +16,12 @@ const requestListener = (req, res) => {
     data += chunk;
   })
   req.on('end', () => {
+    data = JSON.parse(data.toString())
     const ticketId = Math.floor(Math.random() * 100000)
+    if (_.get(data, 'payloadCheck')) {
+      const payload = Buffer.from(JSON.stringify(data)).toString('base64')
+      res.setHeader('x-ac-payloadhash', payload)  
+    }
     res.end(ticketId.toString())
   })
 }
@@ -47,7 +53,7 @@ describe('Run test', function() {
       message: 'This is my bug report'
     }
     let response = await ost.createTicket(ticket)
-    expect(response).to.be.a('number')
+    expect(response.ticketId).to.be.a('number')
   })
 
   it('Try to create a ticket with missing email - should fail', async() => {
@@ -72,7 +78,7 @@ describe('Run test', function() {
       expires: 5
     }
     let response = await ost.createTicket(ticket, options)
-    expect(response).to.be.a('number')
+    expect(response.ticketId).to.be.a('number')
   })
 
   it('Try to create a ticket - should be ignored due to lock - return 423', async() => {
@@ -87,7 +93,7 @@ describe('Run test', function() {
       expires: 5
     }
     let response = await ost.createTicket(ticket, options)
-    expect(response).to.eql(423)
+    expect(response.status).to.eql(423)
   })
 
   it('Wait until lock is released', (done) => {
@@ -102,8 +108,45 @@ describe('Run test', function() {
       message: 'This is my bug report'
     }
     let response = await ost.createTicket(ticket)
-    expect(response).to.be.a('number')
+    expect(response.ticketId).to.be.a('number')
   })
+
+  it('Should create a ticket with custom fields - jobNumber should be in originalPayload', async() => {
+    const ticket = {
+      name: 'Jane Doe',
+      email: 'jane.doe@admiralcloud.com',
+      subject: 'I need help',
+      message: 'This is my bug report',
+      jobNumber: 'ABC-JobId-123',
+      payloadCheck: true
+    }
+    const options = {
+      fieldsToCheck: [
+        { field: 'jobNumber', type: 'string', required: true },
+      ]
+    }
+    let response = await ost.createTicket(ticket, options)
+    expect(response.ticketId).to.be.a('number')
+    const originalPayload = JSON.parse(Buffer.from(_.get(response, 'hash'), 'base64').toString('utf-8'))
+    expect(originalPayload).to.have.property('jobNumber', ticket.jobNumber)
+
+  })
+
+  it('Should create a ticket with custom fields - jobNumber should be filtered out', async() => {
+    const ticket = {
+      name: 'Jane Doe',
+      email: 'jane.doe@admiralcloud.com',
+      subject: 'I need help',
+      message: 'This is my bug report',
+      jobNumber: 'ABC-JobId-123',
+      payloadCheck: true
+    }
+    let response = await ost.createTicket(ticket)
+    expect(response.ticketId).to.be.a('number')
+    const originalPayload = JSON.parse(Buffer.from(_.get(response, 'hash'), 'base64').toString('utf-8'))
+    expect(originalPayload).not.to.have.property('jobNumber')
+  })
+
 
   it('Should create a ticket with DEBUG', async() => {
     const ticket = {
@@ -113,8 +156,8 @@ describe('Run test', function() {
       message: 'This is my bug report'
     }
     let response = await ost.createTicket(ticket, { debug: true })
-    expect(response).to.be.a('string')
-    expect(response).to.contain('DEBUGMODE')
+    expect(response.ticketId).to.be.a('number')
+    expect(response.debugMode).to.be.true
   })
 
   it('Should create a ticket with DEBUGMODE as init parameter', async() => {
@@ -129,8 +172,8 @@ describe('Run test', function() {
       message: 'This is my bug report'
     }
     let response = await ost.createTicket(ticket)
-    expect(response).to.be.a('string')
-    expect(response).to.contain('DEBUGMODE')
+    expect(response.ticketId).to.be.a('number')
+    expect(response.debugMode).to.be.true
   })
 
   it('Try to create a ticket at a non-existing server - should fail', async() => {
@@ -149,6 +192,8 @@ describe('Run test', function() {
     let response = await ost.createTicket(ticket)
     expect(response).to.be.have.property('code', 'ECONNREFUSED')
   })
+
+
 
  
 
