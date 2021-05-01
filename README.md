@@ -38,6 +38,16 @@ const ticket = {
 let ticketId = await ost.createTicket(ticket)
 ```
 
+Optionally you can use our locking mechanism to block creating too many tickets.
+
+```
+let options = {
+    key: 'ticketLock', // name for the key to use as lock key
+    expires: 5 // time to block in seconds
+}
+let ticketId = await ost.createTicket(ticket, options)
+```
+
 ## Test mode
 You can enable test mode, which will not create real tickets but instead return a random ID with "DEBUGMODE" suffix (e.g. 134567_DEBUGMODE). 
 
