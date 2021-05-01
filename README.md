@@ -38,6 +38,30 @@ const ticket = {
 let ticketId = await ost.createTicket(ticket)
 ```
 
+## Test mode
+You can enable test mode, which will not create real tickets but instead return a random ID with "DEBUGMODE" suffix (e.g. 134567_DEBUGMODE). 
+
+Enable testmode globally by using init parameter "debugmode" to true or use it on per-function basis and create a ticket with option debug = true.
+
+```
+ost.init({
+  baseUrl: 'https://myOSTicketURL',
+  apiKey: 'abc-123', 
+  apiSecret: 'abc-secret' // optional if you have tweaked OSTicket,
+  debugMode: true
+})
+
+// OR
+const ticket = {
+    "name": "Jane Doe",
+    "email": "jane.doe@admiralcloud.com",
+    "subject": "I need help",
+    "message": "This is my bug report"
+}
+
+let ticketId = await ost.createTicket(ticket, { debug: true })
+```
+
 # OSTicket Tweaks
 API Keys are currently bound to IP addresses. This might be a problem if you have more than one IP and - due to scaling - might always have several and different IPs. Therefore the OSTicket is slightly modified to handle this.
 

@@ -24,6 +24,12 @@ const osTicket = () => {
       data: _.get(params, 'data')
     }
 
+    if (_.get(apiBaseParams, 'debugMode') || _.get(params, 'debug')) {
+      const ticketId = `${Math.floor(Math.random() * 100000)}_DEBUGMODE`
+      return ticketId
+    }
+
+
     try {
       let response = await axios(apiParams)
       return _.get(response, 'data')  
@@ -43,6 +49,9 @@ const osTicket = () => {
     if (_.get(params, 'apiSecret')) {
       _.set(apiBaseParams, 'headers.x-api-auth', _.get(params, 'apiSecret'))
     }
+    if (_.has(params, 'debugMode')) {
+      _.set(apiBaseParams, 'debugMode', _.get(params, 'debugMode'))
+    }
     await keylock.init()
   }
   
@@ -60,7 +69,8 @@ const osTicket = () => {
     if (_.get(test, 'error')) return _.get(test, 'error')
 
     let apiParams = {
-      data
+      data,
+      debug: _.get(options, 'debug')
     }
     
     if (!_.get(options, 'key')) {

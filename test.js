@@ -105,10 +105,39 @@ describe('Run test', function() {
     expect(response).to.be.a('number')
   })
 
+  it('Should create a ticket with DEBUG', async() => {
+    const ticket = {
+      name: 'Jane Doe',
+      email: 'jane.doe@admiralcloud.com',
+      subject: 'I need help',
+      message: 'This is my bug report'
+    }
+    let response = await ost.createTicket(ticket, { debug: true })
+    expect(response).to.be.a('string')
+    expect(response).to.contain('DEBUGMODE')
+  })
+
+  it('Should create a ticket with DEBUGMODE as init parameter', async() => {
+    ost.init({
+      debugMode: true
+    })
+
+    const ticket = {
+      name: 'Jane Doe',
+      email: 'jane.doe@admiralcloud.com',
+      subject: 'I need help',
+      message: 'This is my bug report'
+    }
+    let response = await ost.createTicket(ticket)
+    expect(response).to.be.a('string')
+    expect(response).to.contain('DEBUGMODE')
+  })
+
   it('Try to create a ticket at a non-existing server - should fail', async() => {
     ost.init({
       baseUrl: 'http://localhost:8071/',
-      apiKey: 'abc-123'
+      apiKey: 'abc-123',
+      debugMode: false
     })
 
     const ticket = {
@@ -120,5 +149,7 @@ describe('Run test', function() {
     let response = await ost.createTicket(ticket)
     expect(response).to.be.have.property('code', 'ECONNREFUSED')
   })
+
+ 
 
 })
