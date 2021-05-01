@@ -1,3 +1,12 @@
+<a name="2.0.4"></a>
+
+## [2.0.4](https://github.com/mmpro/ac-osticket/compare/v2.0.3..v2.0.4) (2021-05-01 13:39:21)
+
+
+### Bug Fix
+
+* **App:** Allow parameter keylock for init | MP | [5a9817ad856b3c3f48a2e31aa3fdbff45692f0c6](https://github.com/mmpro/ac-osticket/commit/5a9817ad856b3c3f48a2e31aa3fdbff45692f0c6)    
+Allow parameter keylock for init
 <a name="2.0.3"></a>
 
 ## [2.0.3](https://github.com/mmpro/ac-osticket/compare/v2.0.2..v2.0.3) (2021-05-01 13:14:58)

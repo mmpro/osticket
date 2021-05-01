@@ -1,6 +1,6 @@
 {
   "name": "ac-osticket",
-  "version": "2.0.3",
+  "version": "2.0.4",
   "description": "OSTicket API Wrapper",
   "repository": "https://github.com/mmpro/ac-osticket",
   "main": "index.js",
