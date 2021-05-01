@@ -1,3 +1,20 @@
+<a name="2.0.3"></a>
+
+## [2.0.3](https://github.com/mmpro/ac-osticket/compare/v2.0.2..v2.0.3) (2021-05-01 13:14:58)
+
+
+### Bug Fix
+
+* **App:** Response is always an object | MP | [04fdb81f9436b4871b171e0d606fcd4f35e880d8](https://github.com/mmpro/ac-osticket/commit/04fdb81f9436b4871b171e0d606fcd4f35e880d8)    
+Response is always an object
+### Tests
+
+* **App:** Added tests with custom fields | MP | [f49a52e6162a8b21d66b85557dce7162be2179ce](https://github.com/mmpro/ac-osticket/commit/f49a52e6162a8b21d66b85557dce7162be2179ce)    
+Added tests with custom fields
+### Documentation
+
+* **App:** Updated README | MP | [7803066bfe2ca3b2c5910e2072fe97f7cdcb8029](https://github.com/mmpro/ac-osticket/commit/7803066bfe2ca3b2c5910e2072fe97f7cdcb8029)    
+Updated README
 <a name="2.0.2"></a>
 
 ## [2.0.2](https://github.com/mmpro/ac-osticket/compare/v2.0.1..v2.0.2) (2021-05-01 11:13:49)
